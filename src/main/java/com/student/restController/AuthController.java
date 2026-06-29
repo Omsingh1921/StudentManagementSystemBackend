@@ -18,7 +18,7 @@ import com.student.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173"})
+@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173", "https://studentmanagementsystemfront.netlify.app"})
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
