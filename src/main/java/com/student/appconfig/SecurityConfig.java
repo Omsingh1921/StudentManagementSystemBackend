@@ -35,19 +35,25 @@ public class SecurityConfig {
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);  // 👈 use injected bean
         return http.build();
     }
+    
     @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("https://studentmanagementsystemfront.netlify.app","http://127.0.0.1:5500", "http://localhost:5500", "null")
-                        .allowedMethods("*")
-                        .allowedHeaders("*")
-                        .allowCredentials(true);
-            }
-        };
-    }
+public WebMvcConfigurer corsConfigurer() {
+    return new WebMvcConfigurer() {
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**")
+                    .allowedOrigins(
+                        "https://studentmanagementsystemfront.netlify.app",
+                        "http://localhost:5173",
+                        "http://127.0.0.1:5173"
+                    )
+                    .allowedMethods("*")
+                    .allowedHeaders("*")
+                    .allowCredentials(true);
+        }
+    };
+}
+    
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
